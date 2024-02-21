@@ -6,6 +6,12 @@ const Search: React.FC = () => {
     const [results, setResults] = useState<any[]>([]);
 
     const search = async () => {
+        // Validate the query input field
+        if (!query.trim()) {
+            alert("Please enter a search query");
+            return;
+        }
+
         const apiUrl = `https://api.bing.microsoft.com/v7.0/search?q=${query}`;
         const headers = {
             "Ocp-Apim-Subscription-Key": process.env.REACT_APP_BING_API_KEY!,
